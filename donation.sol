@@ -25,7 +25,7 @@ contract donation {
     }
    
     function donatetoNGO(address _NGO, uint amount) public  {
-        require(amount <= balances[msg.sender], "You have insuffient funds to withdraw");
+        require(amount <= balances[msg.sender], "You have insuffient funds");
         balances[msg.sender] -= amount;
         balances[_NGO] += amount;
        NGO = _NGO;
@@ -34,7 +34,7 @@ contract donation {
 
     function donatetoVictim(address  _victim, uint amount) public  {
          Victim = _victim;
-        require(amount <= balances[msg.sender], "You have insuffient funds to withdraw");
+        require(amount <= balances[msg.sender], "You have insuffient funds ");
         balances[msg.sender] -= amount;
         balances[_victim] += amount;
          Victim = _victim;
