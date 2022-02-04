@@ -20,16 +20,15 @@ contract donation {
 
     
     function depositFundIntoWallet() public payable {
-        require(msg.value != 0, "You need to deposit some amount of funds!");
+        require(msg.value != 0, "You need to deposit some amount of funds into wallet!");
         balances[msg.sender] += msg.value;
     }
    
     function donatetoNGO(address _NGO, uint amount) public  {
-          NGO = _NGO;
         require(amount <= balances[msg.sender], "You have insuffient funds to withdraw");
         balances[msg.sender] -= amount;
         balances[_NGO] += amount;
-       // NGO = _NGO;
+       NGO = _NGO;
         emit Sent(msg.sender, _NGO, amount);
     }
 
